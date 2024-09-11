@@ -1,11 +1,11 @@
 ---
 layout: page
-title: projects
-permalink: /projects/
-description: A growing collection of your cool projects.
-nav: False
-nav_order: 3
-display_categories: [work, fun]
+title: Drawer
+permalink: /drawer/
+description: A growing collection of my lifes.
+nav: true
+nav_order: 7
+display_categories: [trip, exercise, etc.]
 horizontal: false
 ---
 

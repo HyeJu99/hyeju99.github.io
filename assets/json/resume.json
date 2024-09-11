@@ -1,200 +1,239 @@
 {
   "basics": {
-    "name": "Albert Einstein",
-    "label": "Scientist",
-    "image": "",
-    "email": "albert@einstein.de",
-    "phone": "(912) 123-4567",
-    "url": "https://alshedivat.github.io/al-folio/",
-    "summary": "A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time",
+    "name": "Hyeju Shin",
+    "position": "Post-master's Researcher at ETRI",
+    "image": "./assets/img/Hyeju.jpg",
+    "email": "sinhye102@gmail.com",
+    "phone": "(+82) 10-5785-3367",
+    "summary": "",
     "location": {
-      "address": "2712 Broadway St",
-      "postalCode": "CA 94115",
-      "city": "San Francisco",
-      "countryCode": "US",
-      "region": "California"
-    },
-    "profiles": [
-      {
-        "network": "Twitter",
-        "username": "AlbertEinstein",
-        "url": "https://twitter.com/AlbertEinstein"
-      }
-    ]
+      "address": "",
+      "postalCode": "",
+      "city": "Gwangju",
+      "countryCode": "South Korea",
+      "region": ""
+    }
   },
-  "work": [
-    {
-      "name": "Institute for Advanced Study, Princeton University",
-      "position": "Professor of Theoretical Physics",
-      "url": "https://example.com",
-      "startDate": "1933-01-01",
-      "endDate": "1955-01-01",
-      "summary": "Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.",
-      "highlights": ["Relativity"]
-    }
-  ],
-  "volunteer": [
-    {
-      "organization": "People's Climate March",
-      "location": "Zurich, Switzerland",
-      "position": "Lead Organizer",
-      "url": "https://example.com",
-      "startDate": "2014-04-01",
-      "endDate": "2015-07-01",
-      "summary": "Lead organizer for the New York City branch of the People's Climate March, the largest climate march in history.",
-      "highlights": ["Awarded 'Climate Hero' award by Greenpeace for my efforts organizing the march.", "Men of the year 2014 by Time magazine"]
-    }
-  ],
   "education": [
     {
-      "institution": "University of Zurich, Zurich, Switzerland",
-      "location": "Zurich, Switzerland",
-      "url": "https://www.uzh.ch/",
-      "area": "Software Development",
-      "studyType": "PhD",
-      "startDate": "1905-01-01",
-      "endDate": "1905-01-01",
-      "score": "10",
-      "courses": ["Theory of Relativity"]
+      "institution": "Chonnam National University (Advisor: <a href=https://scholar.google.com/citations?user=5c2UGQIAAAAJ&hl=ko&oi=ao>Prof. Jinsul Kim</a>)",
+      "location": "Gwangju, South Korea",
+      "url": "https://global.jnu.ac.kr/jnumain_en.aspx",
+      "area": "",
+      "studyType": "M.S. in Electronics and Computer Engineering",
+      "startDate": "2022-03-01",
+      "endDate": "2024-02-29",
+      "score": "4.39/4.50",
+      "courses": []
+    },
+    {
+      "institution": "Chonnam National University",
+      "location": "Gwangju, South Korea",
+      "url": "https://global.jnu.ac.kr/jnumain_en.aspx",
+      "area": "",
+      "studyType": "B.E. in Computer & Information Engineering",
+      "startDate": "2017-03-01",
+      "endDate": "2022-02-26",
+      "score": "3.58/4.50",
+      "courses": ["<b>Relevant Coursework (A/A+):</b> Math1, Discrete Mathematics, C programming basics and practice, Data Structure (C), Computer Engineering Basic Experiment (python&linux), C++ programming and practice, Artificial Intelligence-English30 (python), Capstone Design 2 (python)"]
+    },
+    {
+      "institution": "Chonnam National University",
+      "location": "Gwangju, South Korea",
+      "url": "https://global.jnu.ac.kr/jnumain_en.aspx",
+      "area": "",
+      "studyType": "B.E. in Industrial Engineering",
+      "startDate": "2017-03-01",
+      "endDate": "2022-02-26",
+      "score": "3.58/4.50"
+    }
+  ],
+  "work": [
+    {
+      "name": "Electronics and Telecommunications Research Institute",
+      "position": "Post-master's Researcher",
+      "location": "Gwangju, South Korea",
+      "url": "https://www.etri.re.kr/eng/sub6/sub6_01020101.etri?departCode=93&departInfoCode=214",
+      "startDate": "2024-09-23",
+      "endDate": "Present",
+      "summary": "",
+      "highlights": []
+    },
+    {
+      "name": "AISeed",
+      "position": "Researcher",
+      "location": "Gwangju, South Korea",
+      "url": "",
+      "startDate": "2024-03-01",
+      "endDate": "2024-09-01",
+      "summary": "",
+      "highlights": ["Established real-time OCR function of medical AI service using Opensource with PyTorch"]
+    },
+    {
+      "name": "Electronics and Telecommunications Research Institute",
+      "position": "Research Intern",
+      "location": "Gwangju, South Korea",
+      "url": "https://www.etri.re.kr/eng/sub6/sub6_01020101.etri?departCode=93&departInfoCode=214",
+      "startDate": "2023-11-01",
+      "endDate": "2024-02-29",
+      "summary": "",
+      "highlights": ["Performed pose-estimation inference acceleration on Jetson nano with Hailo-8 and ONNX."]
+    },
+    {
+      "name": "Institut Polytechnique de Paris (Advisor: <a href=https://scholar.google.com/citations?user=CZ3DCn4AAAAJ&hl=ko&oi=ao>Prof. Keun-Woo Lim</a>)",
+      "position": "Short-term Visiting Researcher",
+      "location": "Palaiseau, France",
+      "url": "https://nms.telecom-paristech.fr/",
+      "startDate": "2023-07-01",
+      "endDate": "2023-07-18",
+      "summary": "",
+      "highlights": ["Presented DTN techonology with research discussion about on-device learning."]
     }
   ],
   "awards": [
     {
-      "title": "Nobel Prize in Physics",
-      "date": "1921-11-01",
-      "awarder": "Royal Swedish Academy of Sciences",
-      "url": "https://www.nobelprize.org/prizes/physics/1921/einstein/biographical/",
-      "summary": "The Nobel Prizes are five separate prizes that, according to Alfred Nobel's will of 1895, are awarded to 'those who, during the preceding year, have conferred the greatest benefit to humankind.'"
+      "title": "The Excellence Paper Prize",
+      "date": "2022-11",
+      "awarder": "Korea Digital Contents Society",
+      "url": "",
+      "summary": ""
+    },
+    {
+      "title": "<a href=https://hyejushin.oopy.io/>The Excellence Prize of Capstone Design Contest</a>",
+      "date": "2021-09",
+      "awarder": "Engineering Innovation Center at CNU",
+      "url": "",
+      "summary": ""
+    },
+    {
+      "title": "The Third Prize of Public Data Utilization Contest",
+      "date": "2020-07",
+      "awarder": "Gwangju Metropolitan City",
+      "url": "",
+      "summary": ""
     }
   ],
   "certificates": [
     {
-      "name": "Machine Learning",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-location-dot"
+      "name": "<b>Quantization Fundamentals</b>",
+      "date": "2024-08-22",
+      "issuer": "DeepLearning.AI, Hugging Face",
+      "url": "https://learn.deeplearning.ai/accomplishments/b8d9a190-728d-4cd1-973b-5eb632edde60?usp=sharing",
+      "icon": "fa-solid fa-thumbtack"
     },
     {
-      "name": "Quantum Computing",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-tag"
+      "name": "<b>Intro to Federated Learning</b>",
+      "date": "2024-08-18",
+      "issuer": "DeepLearning.AI, Flower Labs",
+      "url": "https://learn.deeplearning.ai/accomplishments/be2f9cf7-b156-4a10-9afb-f6b81fd3c91d?usp=sharing",
+      "icon": "fa-solid fa-thumbtack"
     },
     {
-      "name": "Quantum Information",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-envelope"
+      "name": "<b>Introduction to on-device AI</b>",
+      "date": "2024-06-16",
+      "issuer": "DeepLearning.AI, Qualcomm",
+      "url": "https://learn.deeplearning.ai/accomplishments/a3e13ae1-011b-43c0-9a2a-0d86f1eb153b?usp=sharing",
+      "icon": "fa-solid fa-thumbtack"
     },
     {
-      "name": "Quantum Cryptography",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-hashtag"
+      "name": "<b>Advanced Learning Algorithms</b>",
+      "date": "2024-06-13",
+      "issuer": "DeepLearning.AI, Stanford University",
+      "url": "https://www.coursera.org/account/accomplishments/verify/KKP7VQL5FFQA",
+      "icon": "fa-solid fa-thumbtack"
     },
     {
-      "name": "Quantum Communication",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-calendar"
-    },
-    {
-      "name": "Quantum Teleportation",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-clipboard-check"
+      "name": "<b>Supervised Machine Learning</b>",
+      "date": "2024-05-07",
+      "issuer": "DeepLearning.AI, Stanford University",
+      "url": "https://www.coursera.org/account/accomplishments/verify/C9RRTVCCTZAP",
+      "icon": "fa-solid fa-thumbtack"
     }
   ],
-  "publications": [
+  "volunteer": [
     {
-      "name": "Zur Elektrody/namik bewegter Körper",
-      "publisher": "Annalen der Physik",
-      "releaseDate": "1905-06-30",
-      "url": "https://en.wikisource.org/wiki/Translation:On_the_Electrodynamics_of_Moving_Bodies",
-      "summary": "It concerned an interpretation of the Michelson–Morley experiment and the properties of light and time. Special relativity incorporates the principle that the speed of light is the same for all inertial observers regardless of the state of motion of the source."
+      "organization": "GenAI",
+      "position": "Beta Tester",
+      "url": "https://genai.works/",
+      "startDate": "2024-08-01",
+      "endDate": "Present",
+      "summary": "",
+      "highlights": []
     },
     {
-      "name": "Über einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt",
-      "publisher": "Annalen der Physik",
-      "releaseDate": "1905-03-18",
-      "url": "https://de.wikisource.org/wiki/Über_einen_die_Erzeugung_und_Verwandlung_des_Lichtes_betreffenden_heuristischen_Gesichtspunkt",
-      "summary": "In the second paper, he applied the quantum theory to light to explain the photoelectric effect. In particular, he used the idea of light quanta (photons) to explain experimental results, but stressed the importance of the experimental results. The importance of his work on the photoelectric effect earned him the Nobel Prize in Physics in 1921."
+      "organization": "Springer Nature",
+      "position": "Reviewer",
+      "url": "https://www.nature.com/srep/highlights/our-reviewers",
+      "startDate": "2024-06-01",
+      "endDate": "Present",
+      "summary": "",
+      "highlights": []
     },
     {
-      "name": "Die Grundlage der allgemeinen Relativitätstheorie",
-      "publisher": "Annalen der Physik",
-      "releaseDate": "1916-03-20",
-      "url": "https://de.wikisource.org/wiki/Die_Grundlage_der_allgemeinen_Relativitätstheorie",
-      "summary": "The publication of the theory of general relativity made him internationally famous. He was professor of physics at the universities of Zurich (1909–1911) and Prague (1911–1912), before he returned to ETH Zurich (1912–1914)."
+      "organization": "Korean Red Cross",
+      "position": "Blood Donor",
+      "url": "https://www.redcross.or.kr/eng/eng_activity/activity_blood_about_us.do?_ga=2.82529686.1649325939.1666676806-1981550735.1658451774",
+      "startDate": "2015-04-03",
+      "endDate": "Present",
+      "summary": "",
+      "highlights": []
     }
   ],
   "skills": [
     {
-      "name": "Physics",
-      "level": "Master",
+      "name": "Programming Languages",
+      "level": "",
       "icon": "fa-solid fa-hashtag",
       "keywords": [
-        "Quantum Mechanics",
-        "Quantum Computing",
-        "Quantum Information",
-        "Quantum Cryptography",
-        "Quantum Communication",
-        "Quantum Teleportation"
+        "Python, C++, C, JavaScript, JAVA"
       ]
-    }
-  ],
-  "languages": [
-    {
-      "language": "German",
-      "fluency": "Native speaker",
-      "icon": ""
     },
     {
-      "language": "English",
-      "fluency": "Fluent",
-      "icon": ""
-    }
-  ],
-  "interests": [
-    {
-      "name": "Physics",
-      "icon": "fa-solid fa-tag",
+      "name": "Hardware Platforms",
+      "level": "",
+      "icon": "fa-solid fa-hashtag",
       "keywords": [
-        "Quantum Mechanics",
-        "Quantum Computing",
-        "Quantum Information",
-        "Quantum Cryptography",
-        "Quantum Communication",
-        "Quantum Teleportation"
+        "Jetson Orin Nano, Jetson Nano/Xavier, Raspberry Pi, Arduino UNO"
+      ]
+    },
+    {
+      "name": "Programming Tools",
+      "level": "",
+      "icon": "fa-solid fa-hashtag",
+      "keywords": [
+        "OpenCV, Hugging Face, Roboflow, Docker, AWS, gnuplot, Node.js"
+      ]
+    },
+    {
+      "name": "Collaboration Tools",
+      "level": "",
+      "icon": "fa-solid fa-hashtag",
+      "keywords": [
+        "Overleaf, Github, Notion, Discord, Slack, Microsoft Teams"
       ]
     }
   ],
   "references": [
     {
-      "name": "Professor John Doe",
-      "icon": "fa-solid fa-laptop",
-      "reference": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit. D"
+      "name": "<b><a href=mailto:jsworld@jnu.ac.kr>Prof. Jinsul Kim</a></b>",
+      "icon": "fa-solid fa-thumbtack",
+      "url": "jsworld@jnu.ac.kr",
+      "reference": "Associate Professor at Chonnam National University"
     },
     {
-      "name": "Professor John Doe",
-      "icon": "fa-solid fa-thumbtack",
-      "reference": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit. D"
-    }
-  ],
-  "projects": [
+      "name": "<b><a href=mailto:sungchang@etri.re.kr>Dr. Sung Chang Kim</a></b>",
+      "icon": "fa-solid fa-laptop",
+      "reference": "Director of <a href=https://www.etri.re.kr/eng/sub6/sub6_01020101.etri?departCode=93&departInfoCode=214>Edge Computing Application Service Lab.</a> at ETRI"
+    },
     {
-      "name": "Quantum Computing",
-      "summary": "Quantum computing is the use of quantum-mechanical phenomena such as superposition and entanglement to perform computation. Computers that perform quantum computations are known as quantum computers.",
-      "highlights": ["Quantum Teleportation", "Quantum Cryptography"],
-      "startDate": "2018-01-01",
-      "endDate": "2018-01-01",
-      "url": "https://example.com"
+      "name": "<b><a href=mailto:hyeoung@jnu.ac.kr>Prof. Jaehyung Park</a></b>",
+      "icon": "fa-solid fa-laptop",
+      "reference": "Associate Professor at Chonnam National University"
+    },
+    {
+      "name": "<b><a href=https://src-jnu.github.io/page/taejune.html>Prof. Taejune Park</a></b>",
+      "icon": "fa-solid fa-laptop",
+      "reference": "Assistant Professor at Chonnam National University"
     }
   ]
 }
