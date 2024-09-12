@@ -2,11 +2,15 @@
 layout: page
 permalink: /teaching/
 title: Teaching
-description: Materials for courses you taught. Replace this text with your description.
+description:
 nav: true
 nav_order: 5
 ---
 
-For now, this page is assumed to be a static description of your courses. You can convert it to a collection similar to `_projects/` so that you can have a dedicated page for each course.
-
-Organize your courses by years, topics, or universities, however you like!
+<div>
+    <h4>Chonnam National University</h4>
+    <ul>
+        <li>IoT Computing, Teaching Assistant Spring 2023</li>
+        <li>IoT Computing, Teaching Assistant Fall 2022</li>
+    </ul>
+</div>
