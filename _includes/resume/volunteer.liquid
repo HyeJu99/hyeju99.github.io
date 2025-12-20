@@ -1,5 +1,7 @@
 <ul class="card-text font-weight-light list-group list-group-flush">
-  {% assign volunteer = data[1] | sort: 'startDate' | reverse %}
+  {% assign ongoing = data[1] | where: 'endDate', 'Present' | sort: 'startDate' | reverse %}
+  {% assign ended = data[1] | where_exp: 'item', "item.endDate != 'Present'" | sort: 'endDate' | reverse %}
+  {% assign volunteer = ongoing | concat: ended %}
   {% for content in volunteer %}
     <li class="list-group-item">
       <div class="row">

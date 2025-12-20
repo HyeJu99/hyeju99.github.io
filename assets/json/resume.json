@@ -1,10 +1,9 @@
 {
   "basics": {
     "name": "Hyeju Shin",
-    "position": "Post-master's Researcher at ETRI",
+    "position": "Researcher at ETRI",
     "image": "./assets/img/Hyeju.jpg",
-    "email": "sinhye102@gmail.com",
-    "phone": "(+82) 10-5785-3367",
+    "email": "hyeju.shin@etri.re.kr",
     "summary": "",
     "location": {
       "address": "",
@@ -35,7 +34,9 @@
       "startDate": "2017-03-01",
       "endDate": "2022-02-26",
       "score": "3.58/4.50",
-      "courses": ["<b>Relevant Coursework (A/A+):</b> Math1, Discrete Mathematics, C programming basics and practice, Data Structure (C), Computer Engineering Basic Experiment (python&linux), C++ programming and practice, Artificial Intelligence-English30 (python), Capstone Design 2 (python)"]
+      "courses": [
+        "<b>Relevant Coursework (A/A+):</b> Math1, Discrete Mathematics, C programming basics and practice, Data Structure (C), Computer Engineering Basic Experiment (python&linux), C++ programming and practice, Artificial Intelligence-English30 (python), Capstone Design 2 (python)"
+      ]
     },
     {
       "institution": "Chonnam National University",
@@ -44,50 +45,74 @@
       "area": "",
       "studyType": "B.E. in Industrial Engineering",
       "startDate": "2017-03-01",
-      "endDate": "2022-02-26",
+      "endDate": "2022-02-25",
       "score": "3.58/4.50"
     }
   ],
   "work": [
     {
-      "name": "Electronics and Telecommunications Research Institute",
+      "name": "<b>ETRI (Electronics and Telecommunications Research Institute)</b>",
+      "position": "Researcher",
+      "location": "Gwangju, South Korea",
+      "url": "https://www.etri.re.kr/eng/sub6/sub6_01020101.etri?departCode=93&departInfoCode=214",
+      "startDate": "2025-07-01",
+      "endDate": "Present",
+      "summary": "",
+      "highlights": [
+        "Researching low-latency and energy-efficient AI deployment on edge NPU platforms.",
+        "Designing hardware–software co-optimization strategies for efficient AI inference.",
+        "Developing end-to-end inference pipelines optimized for domestic NPU platforms."
+      ]
+    },
+    {
+      "name": "<b>ETRI (Electronics and Telecommunications Research Institute)</b>",
       "position": "Post-master's Researcher",
       "location": "Gwangju, South Korea",
       "url": "https://www.etri.re.kr/eng/sub6/sub6_01020101.etri?departCode=93&departInfoCode=214",
       "startDate": "2024-09-23",
-      "endDate": "Present",
+      "endDate": "2025-06-30",
       "summary": "",
-      "highlights": []
+      "highlights": [
+        "Explored NPU–CPU heterogeneous architectures with KV-cache optimization techniques.",
+        "Conducted research on efficient edge AI systems using lightweight vision models.",
+        "Implemented object tracking and re-identification algorithms under resource constraints."
+      ]
     },
     {
-      "name": "AISeed",
+      "name": "<b>AISeed</b> (<a href=https://github.com/AISeedHub/>Github</a>)",
       "position": "Researcher",
       "location": "Gwangju, South Korea",
       "url": "",
       "startDate": "2024-03-01",
       "endDate": "2024-09-01",
       "summary": "",
-      "highlights": ["Established real-time OCR function of medical AI service using Opensource with PyTorch"]
+      "highlights": [
+        "Established real-time OCR function of medical AI service using Opensource with PyTorch."
+      ]
     },
     {
-      "name": "Electronics and Telecommunications Research Institute",
+      "name": "<b>ETRI (Electronics and Telecommunications Research Institute)</b>",
       "position": "Research Intern",
       "location": "Gwangju, South Korea",
       "url": "https://www.etri.re.kr/eng/sub6/sub6_01020101.etri?departCode=93&departInfoCode=214",
       "startDate": "2023-11-01",
       "endDate": "2024-02-29",
       "summary": "",
-      "highlights": ["Performed pose-estimation inference acceleration on Jetson nano with Hailo-8 and ONNX."]
+      "highlights": [
+        "Performed pose-estimation inference acceleration on Jetson nano with Hailo-8 and ONNX."
+      ]
     },
     {
-      "name": "Institut Polytechnique de Paris (Advisor: <a href=https://scholar.google.com/citations?user=CZ3DCn4AAAAJ&hl=ko&oi=ao>Prof. Keun-Woo Lim</a>)",
+      "name": "<b>Institut Polytechnique de Paris</b> (Advisor: <a href=https://scholar.google.com/citations?user=CZ3DCn4AAAAJ&hl=ko&oi=ao>Prof. Keun-Woo Lim</a>)",
       "position": "Short-term Visiting Researcher",
       "location": "Palaiseau, France",
       "url": "https://nms.telecom-paristech.fr/",
       "startDate": "2023-07-01",
       "endDate": "2023-07-18",
       "summary": "",
-      "highlights": ["Presented DTN techonology with research discussion about on-device learning."]
+      "highlights": [
+        "Presented DTN techonology with research discussion about on-device learning."
+      ]
     }
   ],
   "awards": [
@@ -152,15 +177,6 @@
   ],
   "volunteer": [
     {
-      "organization": "GenAI",
-      "position": "Beta Tester",
-      "url": "https://genai.works/",
-      "startDate": "2024-08-01",
-      "endDate": "Present",
-      "summary": "",
-      "highlights": []
-    },
-    {
       "organization": "Springer Nature",
       "position": "Reviewer",
       "url": "https://www.nature.com/srep/highlights/our-reviewers",
@@ -177,9 +193,27 @@
       "endDate": "Present",
       "summary": "",
       "highlights": []
+    },
+    {
+      "organization": "GenAI",
+      "position": "Beta Tester",
+      "url": "https://genai.works/",
+      "startDate": "2024-08-01",
+      "endDate": "2024-12-31",
+      "summary": "",
+      "highlights": []
     }
   ],
   "skills": [
+    {
+      "name": "Research Interests",
+      "level": "",
+      "icon": "fa-solid fa-hashtag",
+      "keywords": [
+        "Efficient AI, On-device AI, LLM/VLM Optimization",
+        "NPU Acceleration, Model Compression"
+      ]
+    },
     {
       "name": "Programming Languages",
       "level": "",
@@ -193,7 +227,7 @@
       "level": "",
       "icon": "fa-solid fa-hashtag",
       "keywords": [
-        "Jetson Orin Nano, Jetson Nano/Xavier, Raspberry Pi, Arduino UNO"
+        "Jetson Orin/Nano/Xavier/DGX Spark, LattePanda, Rasberry Pi CM4/5, Raspberry Pi, Arduino UNO"
       ]
     },
     {
@@ -201,7 +235,7 @@
       "level": "",
       "icon": "fa-solid fa-hashtag",
       "keywords": [
-        "OpenCV, Hugging Face, Roboflow, Docker, AWS, gnuplot, Node.js"
+        "Docker, OpenCV, Hugging Face, Roboflow, AWS, gnuplot, Node.js"
       ]
     },
     {
@@ -209,7 +243,7 @@
       "level": "",
       "icon": "fa-solid fa-hashtag",
       "keywords": [
-        "Overleaf, Github, Notion, Discord, Slack, Microsoft Teams"
+        "Overleaf, Github, Discord, Obsidian, Notion, Slack, Microsoft Teams"
       ]
     }
   ],
