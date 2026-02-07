@@ -19,4 +19,4 @@ I am a post-master's researcher at the <b>[Edge Computing Application Service La
 
 I earned my master's degree in Electronics and Computer Engineering from Chonnam National University (CNU), a national university, under the guidance of <b>[Prof. Jinsul Kim](https://scholar.google.com/citations?user=5c2UGQIAAAAJ&hl=ko&oi=ao)</b>. Additionally, I also earned my bachelor's degree in Industrial Engineering, with a double major in Computer Information and Communication Engineering, from CNU.
 
-My current research interests include <b>efficient AI, edge AI, and mathematical machine learning</b>. As a computer scientist, I strive to create a world where no one is excluded from using personalized AI services, regardless of the limitations of their electronic devices.
+My current research interests include <b>efficient AI, edge AI, and mathematical machine learning</b>. Currently, I am working on <b>NPU-based model optimization and acceleration</b>. As a computer scientist, I strive to create a world where no one is excluded from using personalized AI services, regardless of the limitations of their electronic devices.
