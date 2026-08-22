@@ -28,4 +28,6 @@ group :other_plugins do
     gem 'httparty'
     gem 'observer'
     gem 'logger'
+    gem 'ostruct'
+    gem 'benchmark'
 end

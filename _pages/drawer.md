@@ -2,10 +2,10 @@
 layout: page
 title: Drawer
 permalink: /drawer/
-description: A growing collection of my lifes.
+description: A growing collection of my life moments.
 nav: true
 nav_order: 7
-display_categories: [trip, exercise, etc.]
+display_categories: [tech-notes, books, travel, life]
 horizontal: false
 ---
 
