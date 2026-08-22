@@ -391,6 +391,32 @@
         font-size: 1.4rem;
       }
     }
+
+    .site-footer {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 20px 40px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    .site-footer a {
+      color: var(--text-light);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .site-footer a:hover {
+      color: var(--primary);
+    }
+
+    .site-footer .visitor-counter {
+      height: 15px;
+      vertical-align: text-bottom;
+      margin-left: 0.4rem;
+      opacity: 0.75;
+    }
   </style>
 </head>
 
@@ -453,6 +479,14 @@
     <div class="section-title nt" id="ntTitle"></div>
     <div class="book-grid" id="ntGrid"></div>
   </div>
+
+  <footer class="site-footer">
+    <a href="https://hyeju99.github.io/">hyeju99.github.io</a>
+    <img
+      class="visitor-counter"
+      src="https://hits.sh/hyeju99.github.io.svg?view=today-total&amp;style=flat-square&amp;label=Today&amp;color=9e9e9e&amp;labelColor=bdbdbd"
+      alt="Today / total visitors" />
+  </footer>
 
   <script>
     const BOOKS = [
