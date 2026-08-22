@@ -456,6 +456,13 @@ footer.fixed-bottom {
   }
 }
 
+.visitor-counter {
+  height: 15px;
+  vertical-align: text-bottom;
+  margin-left: 0.4rem;
+  opacity: 0.75;
+}
+
 footer.sticky-bottom {
   border-top: 1px solid var(--global-divider-color);
   padding-top: 40px;
@@ -631,6 +638,16 @@ footer.sticky-bottom {
   .card {
     img {
       width: 100%;
+      height: 180px;
+      object-fit: contain;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+    }
+
+    .card-text {
+      font-size: 0.85rem;
     }
   }
 

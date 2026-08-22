@@ -19,6 +19,7 @@ icon: "Drawing-Q.png" # the emoji used as the favicon (alternatively, provide im
 url: https://hyeju99.github.io # the base hostname & protocol for your site
 baseurl: # the subpath of your site, e.g. /blog/. Leave blank for root
 last_updated: true # set to true if you want to display last updated in the footer
+visitor_counter: true # set to true to display a today/total visitor count in the footer (via hits.seeyoufarm.com)
 impressum_path: # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
 back_to_top: true # set to false to disable the back to top button
 

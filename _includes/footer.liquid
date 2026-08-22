@@ -11,6 +11,12 @@
       {% if site.last_updated %}
         Last updated: {{ 'now' | date: '%B %d, %Y' }}.
       {% endif %}
+      {% if site.visitor_counter %}
+        <img
+          class="visitor-counter"
+          src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url={{ site.url | append: site.baseurl | url_encode }}&count_bg=%239E9E9E&title_bg=%23BDBDBD&title=Today&edge_flat=true"
+          alt="Today / total visitors" />
+      {% endif %}
     </div>
   </footer>
 {% else %}
@@ -29,6 +35,12 @@
       {% endif %}
       {% if site.last_updated %}
         Last updated: {{ 'now' | date: '%B %d, %Y' }}.
+      {% endif %}
+      {% if site.visitor_counter %}
+        <img
+          class="visitor-counter"
+          src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url={{ site.url | append: site.baseurl | url_encode }}&count_bg=%239E9E9E&title_bg=%23BDBDBD&title=Today&edge_flat=true"
+          alt="Today / total visitors" />
       {% endif %}
     </div>
   </footer>
