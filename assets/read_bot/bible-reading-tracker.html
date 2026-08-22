@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bible Reading Tracker</title>
+  <style>
+    :root {
+      --primary: #7B1113;
+      --primary-light: #f5e0e0;
+      --primary-dark: #5a0c0e;
+      --accent: #A0522D;
+      --bg: #f8f4f0;
+      --card: #ffffff;
+      --text: #2c2c2c;
+      --text-light: #6b6b6b;
+      --border: #ddd;
+      --ot-color: #7B1113;
+      --nt-color: #7F1734;
+      --complete: #A0522D;
+      --radius: 10px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 0 10px;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      color: var(--primary-dark);
+      margin-bottom: 4px;
+    }
+
+    header p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    /* Lang toggle */
+    .lang-toggle {
+      position: fixed;
+      top: 14px;
+      right: 20px;
+      z-index: 200;
+      display: flex;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 2px solid var(--primary);
+      background: #fff;
+    }
+
+    .lang-toggle button {
+      padding: 6px 14px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 700;
+      background: #fff;
+      color: var(--primary);
+      transition: all 0.2s;
+    }
+
+    .lang-toggle button.active {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    #dashboard {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      margin: 20px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      overflow: visible;
+    }
+
+    .dashboard-img {
+      position: absolute;
+      top: -140px;
+      right: 10px;
+      width: 150px;
+      height: auto;
+      pointer-events: none;
+    }
+
+    .stat-card {
+      text-align: center;
+    }
+
+    .stat-card .label {
+      font-size: 0.8rem;
+      opacity: 0.85;
+      margin-bottom: 4px;
+    }
+
+    .stat-card .value {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .stat-card .sub {
+      font-size: 0.75rem;
+      opacity: 0.7;
+      margin-top: 2px;
+    }
+
+    #dailyCard .value {
+      color: var(--accent);
+      font-size: 2.6rem;
+    }
+
+    .progress-wrap {
+      margin: 6px 0 0;
+      grid-column: 1 / -1;
+    }
+
+    .progress-bar-bg {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      height: 18px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: 20px;
+      background: linear-gradient(90deg, var(--accent), #f0c95e);
+      transition: width 0.5s ease;
+      min-width: 0;
+    }
+
+    .progress-text {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      opacity: 0.85;
+      margin-top: 4px;
+    }
+
+    #completionBanner {
+      display: none;
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 10px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #ffe88a;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px #ffe88a;
+      }
+
+      to {
+        text-shadow: 0 0 20px #ffe88a, 0 0 40px var(--accent);
+      }
+    }
+
+    .hint {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      margin-bottom: 14px;
+      padding: 8px 12px;
+      background: var(--card);
+      border-radius: 6px;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .controls button {
+      padding: 8px 18px;
+      border: 2px solid var(--primary);
+      background: #fff;
+      color: var(--primary);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .controls button:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .controls button.danger {
+      border-color: #c0392b;
+      color: #c0392b;
+    }
+
+    .controls button.danger:hover {
+      background: #c0392b;
+      color: #fff;
+    }
+
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 24px 0 12px;
+      padding-left: 12px;
+      border-left: 4px solid var(--ot-color);
+    }
+
+    .section-title.nt {
+      border-left-color: var(--nt-color);
+    }
+
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 6px;
+    }
+
+    .book-card {
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 8px;
+      transition: all 0.2s;
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .book-card:hover {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .book-card.checked {
+      background: var(--primary-light);
+      border-color: var(--complete);
+    }
+
+    .book-card .book-header {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .book-card .book-header input[type="checkbox"] {
+      width: 15px;
+      height: 15px;
+      accent-color: var(--complete);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .book-card .book-name {
+      font-weight: 600;
+      font-size: 0.8rem;
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .book-card .book-ch {
+      font-size: 0.68rem;
+      color: var(--text-light);
+      flex-shrink: 0;
+    }
+
+    .book-card .book-total {
+      display: none;
+    }
+
+    .book-card .partial-input {
+      display: none;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.78rem;
+      color: var(--text-light);
+      margin-top: 6px;
+      padding-top: 6px;
+      border-top: 1px solid var(--border);
+    }
+
+    .book-card.expanded .partial-input {
+      display: flex;
+    }
+
+    .book-card .partial-input input {
+      width: 48px;
+      padding: 3px 6px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.82rem;
+      text-align: center;
+    }
+
+    .book-card .partial-input input:disabled {
+      background: var(--primary-light);
+      color: var(--complete);
+      border-color: var(--complete);
+    }
+
+    .book-card .complete-badge {
+      display: none;
+      font-size: 0.68rem;
+      color: var(--complete);
+      font-weight: 700;
+    }
+
+    .book-card.checked .complete-badge {
+      display: inline;
+      margin-left: 4px;
+    }
+
+    .book-card.checked .partial-input {
+      display: none !important;
+    }
+
+    .book-card.checked.expanded .partial-input {
+      display: none !important;
+    }
+
+    #encouragement {
+      text-align: center;
+      margin: 24px 0;
+      padding: 20px 24px;
+      background: var(--card);
+      border-radius: var(--radius);
+      color: var(--primary-dark);
+      border: 1.5px solid var(--primary-light);
+    }
+
+    .verse-text {
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.7;
+    }
+
+    .verse-ref {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      margin-top: 6px;
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      #dashboard {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 20px 16px;
+      }
+
+      .book-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      }
+
+      header h1 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="lang-toggle">
+    <button id="btnKo" onclick="setLang('ko')">KO</button>
+    <button id="btnEn" class="active" onclick="setLang('en')">EN</button>
+  </div>
+
+  <div class="container">
+    <header>
+      <img src="assets/bible_img.png" alt="Bible" style="width:64px; height:auto; margin-bottom:8px;">
+      <h1 id="pageTitle"></h1>
+      <p id="dateInfo"></p>
+    </header>
+
+    <div id="dashboard" style="position:relative;">
+      <img src="assets/jesus_chrtr.png" alt="" class="dashboard-img">
+      <div class="stat-card" id="dailyCard">
+        <div class="label" id="lblDaily"></div>
+        <div class="value" id="dailyChapters">-</div>
+        <div class="sub" id="dailyExact"></div>
+      </div>
+      <div class="stat-card">
+        <div class="label" id="lblRead"></div>
+        <div class="value" id="readChapters">0</div>
+        <div class="sub" id="readPercent">0%</div>
+      </div>
+      <div class="stat-card">
+        <div class="label" id="lblRemainDays"></div>
+        <div class="value" id="remainDays">-</div>
+        <div class="sub" id="remainChapters"></div>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+        </div>
+        <div class="progress-text">
+          <span id="progressLeft"></span>
+          <span id="progressRight">0%</span>
+        </div>
+      </div>
+      <div id="completionBanner"></div>
+    </div>
+
+    <div id="encouragement"></div>
+
+    <div class="controls">
+      <button id="btnSelectOT" onclick="selectAll('ot')"></button>
+      <button id="btnSelectNT" onclick="selectAll('nt')"></button>
+      <button id="btnReset" class="danger" onclick="resetAll()"></button>
+    </div>
+
+    <p class="hint" id="hintPartial"></p>
+
+    <div class="section-title" id="otTitle"></div>
+    <div class="book-grid" id="otGrid"></div>
+
+    <div class="section-title nt" id="ntTitle"></div>
+    <div class="book-grid" id="ntGrid"></div>
+  </div>
+
+  <script>
+    const BOOKS = [
+      // 구약 39권 = 929장
+      { ko: "창세기", en: "Genesis", ch: 50, t: "ot" },
+      { ko: "출애굽기", en: "Exodus", ch: 40, t: "ot" },
+      { ko: "레위기", en: "Leviticus", ch: 27, t: "ot" },
+      { ko: "민수기", en: "Numbers", ch: 36, t: "ot" },
+      { ko: "신명기", en: "Deuteronomy", ch: 34, t: "ot" },
+      { ko: "여호수아", en: "Joshua", ch: 24, t: "ot" },
+      { ko: "사사기", en: "Judges", ch: 21, t: "ot" },
+      { ko: "룻기", en: "Ruth", ch: 4, t: "ot" },
+      { ko: "사무엘상", en: "1 Samuel", ch: 31, t: "ot" },
+      { ko: "사무엘하", en: "2 Samuel", ch: 24, t: "ot" },
+      { ko: "열왕기상", en: "1 Kings", ch: 22, t: "ot" },
+      { ko: "열왕기하", en: "2 Kings", ch: 25, t: "ot" },
+      { ko: "역대상", en: "1 Chronicles", ch: 29, t: "ot" },
+      { ko: "역대하", en: "2 Chronicles", ch: 36, t: "ot" },
+      { ko: "에스라", en: "Ezra", ch: 10, t: "ot" },
+      { ko: "느헤미야", en: "Nehemiah", ch: 13, t: "ot" },
+      { ko: "에스더", en: "Esther", ch: 10, t: "ot" },
+      { ko: "욥기", en: "Job", ch: 42, t: "ot" },
+      { ko: "시편", en: "Psalms", ch: 150, t: "ot" },
+      { ko: "잠언", en: "Proverbs", ch: 31, t: "ot" },
+      { ko: "전도서", en: "Ecclesiastes", ch: 12, t: "ot" },
+      { ko: "아가", en: "Song of Solomon", ch: 8, t: "ot" },
+      { ko: "이사야", en: "Isaiah", ch: 66, t: "ot" },
+      { ko: "예레미야", en: "Jeremiah", ch: 52, t: "ot" },
+      { ko: "예레미야애가", en: "Lamentations", ch: 5, t: "ot" },
+      { ko: "에스겔", en: "Ezekiel", ch: 48, t: "ot" },
+      { ko: "다니엘", en: "Daniel", ch: 12, t: "ot" },
+      { ko: "호세아", en: "Hosea", ch: 14, t: "ot" },
+      { ko: "요엘", en: "Joel", ch: 3, t: "ot" },
+      { ko: "아모스", en: "Amos", ch: 9, t: "ot" },
+      { ko: "오바댜", en: "Obadiah", ch: 1, t: "ot" },
+      { ko: "요나", en: "Jonah", ch: 4, t: "ot" },
+      { ko: "미가", en: "Micah", ch: 7, t: "ot" },
+      { ko: "나훔", en: "Nahum", ch: 3, t: "ot" },
+      { ko: "하박국", en: "Habakkuk", ch: 3, t: "ot" },
+      { ko: "스바냐", en: "Zephaniah", ch: 3, t: "ot" },
+      { ko: "학개", en: "Haggai", ch: 2, t: "ot" },
+      { ko: "스가랴", en: "Zechariah", ch: 14, t: "ot" },
+      { ko: "말라기", en: "Malachi", ch: 4, t: "ot" },
+      // 신약 27권 = 260장
+      { ko: "마태복음", en: "Matthew", ch: 28, t: "nt" },
+      { ko: "마가복음", en: "Mark", ch: 16, t: "nt" },
+      { ko: "누가복음", en: "Luke", ch: 24, t: "nt" },
+      { ko: "요한복음", en: "John", ch: 21, t: "nt" },
+      { ko: "사도행전", en: "Acts", ch: 28, t: "nt" },
+      { ko: "로마서", en: "Romans", ch: 16, t: "nt" },
+      { ko: "고린도전서", en: "1 Corinthians", ch: 16, t: "nt" },
+      { ko: "고린도후서", en: "2 Corinthians", ch: 13, t: "nt" },
+      { ko: "갈라디아서", en: "Galatians", ch: 6, t: "nt" },
+      { ko: "에베소서", en: "Ephesians", ch: 6, t: "nt" },
+      { ko: "빌립보서", en: "Philippians", ch: 4, t: "nt" },
+      { ko: "골로새서", en: "Colossians", ch: 4, t: "nt" },
+      { ko: "데살로니가전서", en: "1 Thessalonians", ch: 5, t: "nt" },
+      { ko: "데살로니가후서", en: "2 Thessalonians", ch: 3, t: "nt" },
+      { ko: "디모데전서", en: "1 Timothy", ch: 6, t: "nt" },
+      { ko: "디모데후서", en: "2 Timothy", ch: 4, t: "nt" },
+      { ko: "디도서", en: "Titus", ch: 3, t: "nt" },
+      { ko: "빌레몬서", en: "Philemon", ch: 1, t: "nt" },
+      { ko: "히브리서", en: "Hebrews", ch: 13, t: "nt" },
+      { ko: "야고보서", en: "James", ch: 5, t: "nt" },
+      { ko: "베드로전서", en: "1 Peter", ch: 5, t: "nt" },
+      { ko: "베드로후서", en: "2 Peter", ch: 3, t: "nt" },
+      { ko: "요한일서", en: "1 John", ch: 5, t: "nt" },
+      { ko: "요한이서", en: "2 John", ch: 1, t: "nt" },
+      { ko: "요한삼서", en: "3 John", ch: 1, t: "nt" },
+      { ko: "유다서", en: "Jude", ch: 1, t: "nt" },
+      { ko: "요한계시록", en: "Revelation", ch: 22, t: "nt" }
+    ];
+
+    const VERSES = [
+      {
+        ko: '"이 율법책을 네 입에서 떠나지 말게 하며 주야로 그것을 묵상하여 그 안에 기록된 대로 다 지켜 행하라 그리하면 네 길이 평탄하게 될 것이며 네가 형통하리라"',
+        en: '"Keep this Book of the Law always on your lips; meditate on it day and night, so that you may be careful to do everything written in it. Then you will be prosperous and successful."',
+        refKo: '여호수아 1:8', refEn: 'Joshua 1:8'
+      },
+      {
+        ko: '"너희가 내 안에 거하고 내 말이 너희 안에 거하면 무엇이든지 원하는 대로 구하라 그리하면 이루리라"',
+        en: '"If you remain in me and my words remain in you, ask whatever you wish, and it will be done for you."',
+        refKo: '요한복음 15:7', refEn: 'John 15:7'
+      },
+      {
+        ko: '"주의 말씀은 내 발에 등이요 내 길에 빛이니이다"',
+        en: '"Your word is a lamp for my feet, a light on my path."',
+        refKo: '시편 119:105', refEn: 'Psalm 119:105'
+      },
+      {
+        ko: '"모든 성경은 하나님의 감동으로 된 것으로 교훈과 책망과 바르게 함과 의로 교육하기에 유익하니"',
+        en: '"All Scripture is God-breathed and is useful for teaching, rebuking, correcting and training in righteousness."',
+        refKo: '디모데후서 3:16', refEn: '2 Timothy 3:16'
+      },
+      {
+        ko: '"하나님의 말씀은 살아 있고 활력이 있어 좌우에 날선 어떤 검보다도 예리하여 혼과 영과 및 관절과 골수를 찔러 쪼개기까지 하며"',
+        en: '"For the word of God is alive and active. Sharper than any double-edged sword, it penetrates even to dividing soul and spirit, joints and marrow."',
+        refKo: '히브리서 4:12', refEn: 'Hebrews 4:12'
+      },
+      {
+        ko: '"풀은 마르고 꽃은 시드나 우리 하나님의 말씀은 영원히 서리라"',
+        en: '"The grass withers and the flowers fall, but the word of our God endures forever."',
+        refKo: '이사야 40:8', refEn: 'Isaiah 40:8'
+      },
+      {
+        ko: '"너는 진리의 말씀을 옳게 분별하며 부끄러울 것이 없는 일꾼으로 인정된 자로 자신을 하나님 앞에 드리기를 힘쓰라"',
+        en: '"Do your best to present yourself to God as one approved, a worker who does not need to be ashamed and who correctly handles the word of truth."',
+        refKo: '디모데후서 2:15', refEn: '2 Timothy 2:15'
+      },
+      {
+        ko: '"그러므로 너희는 모든 더러운 것과 넘치는 악을 내버리고 능히 너희 영혼을 구원할 바 마음에 심어진 말씀을 온유함으로 받으라"',
+        en: '"Therefore, get rid of all moral filth and the evil that is so prevalent and humbly accept the word planted in you, which can save you."',
+        refKo: '야고보서 1:21', refEn: 'James 1:21'
+      },
+      {
+        ko: '"복 있는 사람은 악인의 꾀를 따르지 아니하며 죄인의 길에 서지 아니하며 오만한 자의 자리에 앉지 아니하고 오직 여호와의 율법을 즐거워하여 그의 율법을 주야로 묵상하는도다"',
+        en: '"Blessed is the one who does not walk in step with the wicked or stand in the way that sinners take or sit in the company of mockers, but whose delight is in the law of the Lord, and who meditates on his law day and night."',
+        refKo: '시편 1:1-2', refEn: 'Psalm 1:1-2'
+      },
+      {
+        ko: '"하늘과 땅은 없어지겠으나 내 말은 없어지지 아니하리라"',
+        en: '"Heaven and earth will pass away, but my words will never pass away."',
+        refKo: '마태복음 24:35', refEn: 'Matthew 24:35'
+      },
+      {
+        ko: '"태초에 말씀이 계시니라 이 말씀이 하나님과 함께 계셨으니 이 말씀은 곧 하나님이시니라"',
+        en: '"In the beginning was the Word, and the Word was with God, and the Word was God."',
+        refKo: '요한복음 1:1', refEn: 'John 1:1'
+      },
+      {
+        ko: '"내가 주의 규례들을 묵상하며 주의 도에 주의하며 주의 율례들을 즐거워하며 주의 말씀을 잊지 아니하리이다"',
+        en: '"I meditate on your precepts and consider your ways. I delight in your decrees; I will not neglect your word."',
+        refKo: '시편 119:15-16', refEn: 'Psalm 119:15-16'
+      },
+    ];
+
+    const I18N = {
+      ko: {
+        title: '성경 통독 진도 계산기',
+        daily: '하루 필요 장수',
+        read: '읽은 장수',
+        remainLabel: '남은 일수',
+        remainSub: (n) => '남은 ' + n.toLocaleString() + '장',
+        progressLeft: (r) => r.toLocaleString() + ' / 1,189장',
+        completion: '축하합니다! 성경 통독을 완료했습니다!',
+        dailyVal: (n) => n + '장',
+        dailyExact: (n) => '(정확히는 ' + n.toFixed(1) + '장)',
+        hint: '💡 카드를 클릭하면 읽은 장수를 입력할 수 있습니다.',
+        selectOT: '구약 전체 선택',
+        selectNT: '신약 전체 선택',
+        reset: '전체 초기화',
+        otTitle: '구약 (39권 \u00B7 929장)',
+        ntTitle: '신약 (27권 \u00B7 260장)',
+        totalCh: (n) => '총 ' + n + '장',
+        chRead: '장 읽음',
+        complete: '완독!',
+        dateInfo: (d, days) => d.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' }) + ' \u00B7 올해 남은 일수: ' + days + '일',
+      },
+      en: {
+        title: 'Bible Reading Tracker',
+        daily: 'Chapters / Day',
+        read: 'Chapters Read',
+        remainLabel: 'Days Left',
+        remainSub: (n) => n.toLocaleString() + ' ch. remaining',
+        progressLeft: (r) => r.toLocaleString() + ' / 1,189 ch.',
+        completion: 'Congratulations! You have completed the Bible!',
+        dailyVal: (n) => n + ' ch.',
+        dailyExact: (n) => '(exactly ' + n.toFixed(1) + ' ch.)',
+        hint: '💡 Click a card to enter partial progress (chapters read so far).',
+        selectOT: 'Select All OT',
+        selectNT: 'Select All NT',
+        reset: 'Reset All',
+        otTitle: 'Old Testament (39 books \u00B7 929 ch.)',
+        ntTitle: 'New Testament (27 books \u00B7 260 ch.)',
+        totalCh: (n) => n + ' ch.',
+        chRead: 'ch. read',
+        complete: 'Done!',
+        dateInfo: (d, days) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) + ' \u00B7 Days left this year: ' + days,
+      }
+    };
+
+    const TOTAL = 1189;
+    const STORAGE_KEY = 'bible_reading_progress';
+    const LANG_KEY = 'bible_tracker_lang';
+    let lang = localStorage.getItem(LANG_KEY) || 'en';
+    let pickedVerse = null;
+
+    function t() { return I18N[lang]; }
+
+    function getToday() {
+      const d = new Date();
+      return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+    }
+
+    function getRemainingDays() {
+      const today = getToday();
+      const endOfYear = new Date(today.getFullYear(), 11, 31);
+      return Math.max(Math.floor((endOfYear - today) / 86400000) + 1, 1);
+    }
+
+    function setLang(l) {
+      lang = l;
+      localStorage.setItem(LANG_KEY, l);
+      document.getElementById('btnKo').classList.toggle('active', l === 'ko');
+      document.getElementById('btnEn').classList.toggle('active', l === 'en');
+      document.documentElement.lang = l;
+      applyLang();
+      update();
+    }
+
+    function applyLang() {
+      const s = t();
+      document.getElementById('pageTitle').textContent = s.title;
+      document.getElementById('dateInfo').textContent = s.dateInfo(getToday(), getRemainingDays());
+      document.getElementById('lblDaily').textContent = s.daily;
+      document.getElementById('lblRead').textContent = s.read;
+      document.getElementById('lblRemainDays').textContent = s.remainLabel;
+      document.getElementById('btnSelectOT').textContent = s.selectOT;
+      document.getElementById('btnSelectNT').textContent = s.selectNT;
+      document.getElementById('btnReset').textContent = s.reset;
+      document.getElementById('otTitle').textContent = s.otTitle;
+      document.getElementById('ntTitle').textContent = s.ntTitle;
+      document.getElementById('completionBanner').textContent = s.completion;
+      document.getElementById('hintPartial').textContent = s.hint;
+      // Update card labels
+      BOOKS.forEach((book, i) => {
+        const card = document.querySelector(`.book-card[data-index="${i}"]`);
+        if (!card) return;
+        card.querySelector('.book-name').textContent = book[lang];
+        card.querySelector('.partial-input span').textContent = s.chRead;
+        card.querySelector('.complete-badge').textContent = s.complete;
+      });
+    }
+
+    function buildCards() {
+      const otGrid = document.getElementById('otGrid');
+      const ntGrid = document.getElementById('ntGrid');
+      BOOKS.forEach((book, i) => {
+        const card = document.createElement('div');
+        card.className = 'book-card';
+        card.dataset.index = i;
+        card.innerHTML = `
+      <div class="book-header" onclick="toggleExpand(${i}, event)">
+        <input type="checkbox" id="cb${i}" onchange="onCheck(${i})" onclick="event.stopPropagation()">
+        <label class="book-name">${book[lang]}</label>
+        <span class="book-ch">${book.ch}</span>
+        <span class="complete-badge"></span>
+      </div>
+      <div class="book-total"></div>
+      <div class="partial-input">
+        <input type="number" id="pi${i}" min="0" max="${book.ch}" value="0"
+               oninput="onPartial(${i})" placeholder="0" onclick="event.stopPropagation()">
+        <span></span>
+      </div>
+    `;
+        (book.t === 'ot' ? otGrid : ntGrid).appendChild(card);
+      });
+    }
+
+    function toggleExpand(i, e) {
+      const card = document.querySelector(`.book-card[data-index="${i}"]`);
+      if (card.classList.contains('checked')) return;
+      card.classList.toggle('expanded');
+    }
+
+    function onCheck(i) {
+      const cb = document.getElementById('cb' + i);
+      const pi = document.getElementById('pi' + i);
+      const card = cb.closest('.book-card');
+      if (cb.checked) {
+        card.classList.add('checked');
+        card.classList.remove('expanded');
+        pi.disabled = true;
+      } else {
+        card.classList.remove('checked');
+        pi.disabled = false;
+      }
+      update();
+      saveProgress();
+    }
+
+    function onPartial(i) {
+      const pi = document.getElementById('pi' + i);
+      let v = parseInt(pi.value) || 0;
+      if (v < 0) v = 0;
+      if (v > BOOKS[i].ch) v = BOOKS[i].ch;
+      pi.value = v || '';
+      if (v === BOOKS[i].ch) {
+        document.getElementById('cb' + i).checked = true;
+        onCheck(i);
+        return;
+      }
+      update();
+      saveProgress();
+    }
+
+    function selectAll(type) {
+      BOOKS.forEach((book, i) => {
+        if (book.t === type) {
+          document.getElementById('cb' + i).checked = true;
+          onCheck(i);
+        }
+      });
+    }
+
+    function resetAll() {
+      BOOKS.forEach((_, i) => {
+        document.getElementById('cb' + i).checked = false;
+        document.getElementById('pi' + i).value = '';
+        document.getElementById('pi' + i).disabled = false;
+        document.getElementById('cb' + i).closest('.book-card').classList.remove('checked');
+      });
+      update();
+      saveProgress();
+    }
+
+    function getReadCount() {
+      let total = 0;
+      BOOKS.forEach((book, i) => {
+        if (document.getElementById('cb' + i).checked) {
+          total += book.ch;
+        } else {
+          total += parseInt(document.getElementById('pi' + i).value) || 0;
+        }
+      });
+      return total;
+    }
+
+    function getVerseHTML() {
+      if (!pickedVerse) pickedVerse = VERSES[Math.floor(Math.random() * VERSES.length)];
+      const v = pickedVerse;
+      const text = lang === 'ko' ? v.ko : v.en;
+      const ref = lang === 'ko' ? v.refKo : v.refEn;
+      return `<div class="verse-text">${text}</div><div class="verse-ref">- ${ref}</div>`;
+    }
+
+    function update() {
+      const s = t();
+      const read = getReadCount();
+      const remain = TOTAL - read;
+      const days = getRemainingDays();
+      const pct = ((read / TOTAL) * 100).toFixed(1);
+
+      document.getElementById('readChapters').textContent = read.toLocaleString();
+      document.getElementById('readPercent').textContent = pct + '%';
+      document.getElementById('remainChapters').textContent = s.remainSub(remain);
+      document.getElementById('remainDays').textContent = days;
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('progressLeft').textContent = s.progressLeft(read);
+      document.getElementById('progressRight').textContent = pct + '%';
+
+      const banner = document.getElementById('completionBanner');
+
+      if (remain <= 0) {
+        banner.style.display = 'block';
+        document.getElementById('dailyChapters').textContent = s.dailyVal(0);
+        document.getElementById('dailyExact').textContent = '';
+      } else {
+        banner.style.display = 'none';
+        const exact = remain / days;
+        const ceil = Math.ceil(exact);
+        document.getElementById('dailyChapters').textContent = s.dailyVal(ceil);
+        document.getElementById('dailyExact').textContent = s.dailyExact(exact);
+      }
+      document.getElementById('encouragement').innerHTML = getVerseHTML();
+    }
+
+    function saveProgress() {
+      const data = BOOKS.map((_, i) => ({
+        c: document.getElementById('cb' + i).checked,
+        p: parseInt(document.getElementById('pi' + i).value) || 0
+      }));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+
+    function loadProgress() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      try {
+        const data = JSON.parse(raw);
+        data.forEach((d, i) => {
+          if (i >= BOOKS.length) return;
+          if (d.c) {
+            document.getElementById('cb' + i).checked = true;
+            document.getElementById('pi' + i).disabled = true;
+            document.getElementById('cb' + i).closest('.book-card').classList.add('checked');
+          } else if (d.p > 0) {
+            document.getElementById('pi' + i).value = d.p;
+          }
+        });
+      } catch (e) { }
+    }
+
+    // Init
+    (function init() {
+      buildCards();
+      loadProgress();
+      setLang(lang);
+    })();
+  </script>
+</body>
+
+</html>
